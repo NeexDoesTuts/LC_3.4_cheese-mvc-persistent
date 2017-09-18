@@ -28,7 +28,7 @@ public class CategoryController {
 
     @RequestMapping(value = "add", method= RequestMethod.GET)
     public String add(Model model) {
-        model.addAttribute(new Category());
+        model.addAttribute(new Category()); // shorthand to pass category key
         model.addAttribute("title", "Add category");
         return "category/add";
     }
@@ -37,11 +37,12 @@ public class CategoryController {
     public String add(Model model, @ModelAttribute @Valid Category category,
                       Errors errors) {
 
+        // validate as always
         if (errors.hasErrors()) {
             return "category/add";
         } // implicit else
 
-        categoryDao.save(category);
-        return "redirect:";
+        categoryDao.save(category); // save the Category object
+        return "redirect:"; // goes back to root path in the controller aka /category
     }
 }
