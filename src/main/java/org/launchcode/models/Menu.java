@@ -1,4 +1,4 @@
-import org.launchcode.models.Cheese;
+package org.launchcode.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
