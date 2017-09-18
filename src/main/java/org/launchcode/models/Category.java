@@ -18,8 +18,8 @@ public class Category {
     private String name;
 
     @OneToMany
-    @JoinColumn(name= "category_id")
-    private List<Cheese> cheeses = new ArrayList<>();
+    @JoinColumn(name= "category_id") // category_id in cheese table
+    private List<Cheese> cheeses = new ArrayList<>(); // list of all cheeses in a given category
 
     public Category() {} // default constructor
 

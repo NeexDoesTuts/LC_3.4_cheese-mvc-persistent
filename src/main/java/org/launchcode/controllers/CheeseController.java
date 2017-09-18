@@ -47,16 +47,19 @@ public class CheeseController {
 
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddCheeseForm(@ModelAttribute  @Valid Cheese newCheese,
-                                       Errors errors, @RequestParam int categoryId, Model model) {
+                                       Errors errors,
+                                       @RequestParam int categoryId,
+                                       Model model) {
 
+        // error check as usual
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Cheese");
             model.addAttribute("categories", categoryDao.findAll());
             return "cheese/add";
         }
 
-        Category cat = categoryDao.findOne(categoryId);
-        newCheese.setCategory(cat);
+        Category cat = categoryDao.findOne(categoryId); // get the new category from the form
+        newCheese.setCategory(cat); // set it on the cheese
         cheeseDao.save(newCheese);
         return "redirect:";
     }
@@ -71,11 +74,12 @@ public class CheeseController {
     @RequestMapping(value = "remove", method = RequestMethod.POST)
     public String processRemoveCheeseForm(@RequestParam int[] cheeseIds) {
 
+        // loop through all the cheeses marked for deletion
         for (int cheeseId : cheeseIds) {
-            cheeseDao.delete(cheeseId);
+            cheeseDao.delete(cheeseId); // delete one by one
         }
 
-        return "redirect:";
+        return "redirect:"; // cheeses
     }
 
     @RequestMapping(value = "category", method = RequestMethod.GET)
