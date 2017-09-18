@@ -14,9 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 
-/**
- * Created by LaunchCode
- */
 @Controller
 @RequestMapping("cheese")
 public class CheeseController {
