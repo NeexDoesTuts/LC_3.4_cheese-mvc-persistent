@@ -40,4 +40,10 @@ public class MenuController {
         return "redirect:/menu/view/" + menu.getId();
     }
 
+    @RequestMapping(value="view/{id}", method=RequestMethod.GET)
+    public String viewMenu(Model model, @PathVariable int id) {
+        model.addAttribute("menu", menuDao.findOne(id));
+        return "menu/view";
+
+    }
 }
