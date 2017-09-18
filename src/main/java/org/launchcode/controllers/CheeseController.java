@@ -18,7 +18,7 @@ import javax.validation.Valid;
 @RequestMapping("cheese")
 public class CheeseController {
 
-    @Autowired
+    @Autowired // no need to implement, instance implemented by Spring "for free"
     private CheeseDao cheeseDao;
 
     // Request path: /cheese
